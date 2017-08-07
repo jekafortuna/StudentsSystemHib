@@ -9,7 +9,7 @@ import ua.kpi.StudentsSystem.entity.Student;
 /**
  * Created by Evgeniy on 31.07.2017.
  */
-public class HibernateExample {
+public class Main {
     public static void main(String[] args) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 
@@ -27,7 +27,6 @@ public class HibernateExample {
 
         Student student = session.get(Student.class, 2);
         System.out.println(student);
-//        student.setAge(38);
         transaction.commit();
 
         session.close();

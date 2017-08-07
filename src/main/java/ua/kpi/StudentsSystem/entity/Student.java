@@ -1,6 +1,7 @@
 package ua.kpi.StudentsSystem.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by Evgeniy on 31.07.2017.
@@ -22,6 +23,12 @@ public class Student {
 
     @Column(name = "age")
     private int age;
+
+    @Embedded
+    private StudentAddress studentAddress;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
+    private Set<Exam> exams;
 
     public int getId() {
         return id;
@@ -53,6 +60,22 @@ public class Student {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public StudentAddress getStudentAddress() {
+        return studentAddress;
+    }
+
+    public void setStudentAddress(StudentAddress studentAddress) {
+        this.studentAddress = studentAddress;
+    }
+
+    public Set<Exam> getExams() {
+        return exams;
+    }
+
+    public void setExams(Set<Exam> exams) {
+        this.exams = exams;
     }
 
     @Override
