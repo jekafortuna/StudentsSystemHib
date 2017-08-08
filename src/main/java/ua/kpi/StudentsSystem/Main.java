@@ -4,9 +4,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import ua.kpi.StudentsSystem.entity.Student;
+import ua.kpi.StudentsSystem.Reports.ExamResult;
+import ua.kpi.StudentsSystem.Reports.Reports;
 
-import javax.persistence.Query;
 import java.util.List;
 
 /**
@@ -35,8 +35,13 @@ public class Main {
         System.out.println(student);
         */
 
+        /*
         Query query = session.createQuery("from Student ");
         List<Student> students = query.getResultList();
+        */
+
+        Reports reports = new Reports();
+        List<ExamResult> results = reports.getExamResults("Steven", "Gerrard", session);
 
         transaction.commit();
 
