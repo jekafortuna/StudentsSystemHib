@@ -6,6 +6,9 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import ua.kpi.StudentsSystem.entity.Student;
 
+import javax.persistence.Query;
+import java.util.List;
+
 /**
  * Created by Evgeniy on 31.07.2017.
  */
@@ -23,10 +26,18 @@ public class Main {
         student.setLastName("Terry");
         student.setAge(30);
 
-        session.save(student); */
+        session.save(student);
+        */
 
-        Student student = session.get(Student.class, 2);
+        /*
+        Student student = session.get(Student.class, 1);
+        Set<Exam> exams = student.getExams();
         System.out.println(student);
+        */
+
+        Query query = session.createQuery("from Student ");
+        List<Student> students = query.getResultList();
+
         transaction.commit();
 
         session.close();
